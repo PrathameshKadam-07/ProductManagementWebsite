@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .login-box input[type="submit"],
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #3498db;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-box input[type="submit"]:hover,
+    .login-box button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    
+    <!-- Login Form -->
+    <form action="./LoginServlets" method="post">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <%if(request.getAttribute("msg")!=null)
+      {%>
+    	    <p style="color:red; margin:8px 0; font-weight:bold;">
+            <%= request.getAttribute("msg") %></p>
+            
+            <%
+      }
+      %>
+      <input type="submit" value="Login">
+    </form>
+
+    <!-- Create New User Button -->
+    <form action="./createUser.html" method="get">
+      <button type="submit">Create New User</button>
+    </form>
+  </div>
+
+</body>
+</html>
